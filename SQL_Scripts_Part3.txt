@@ -1,0 +1,106 @@
+
+CREATE DATABASE WORK_ORDER;
+
+--------------------------------------------BELOW OBJECTS ARE IN WORK_ORDER DB----------------------------------
+
+
+CREATE SEQUENCE workorder_id_seq_primary start 1000;
+
+
+-- Table: tbl_workorder_primary
+
+-- DROP TABLE tbl_workorder_primary;
+
+CREATE TABLE tbl_workorder_primary
+(
+  workid integer NOT NULL DEFAULT nextval('workorder_id_seq_primary'::regclass),
+  unit character varying(80),
+  type character varying(80),
+  status character varying(80),
+  start_date date,
+  end_date date,
+  shipper character varying(80),
+  CONSTRAINT tbl_workorder_primary_pkey PRIMARY KEY (workid)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE tbl_workorder_primary
+  OWNER TO postgres;
+
+
+
+
+CREATE TABLE tbl_workorder_task
+(
+  task_id serial NOT NULL,
+  work_id integer,
+  task_type character varying(80),
+  task_status character varying(80),
+  created_by character varying(80),
+  creation_date timestamp without time zone,
+  priority character varying(80),
+  from_location character varying(80),
+  to_location character varying(80),
+  CONSTRAINT tbl_workorder_task_pkey PRIMARY KEY (task_id),
+  CONSTRAINT tbl_workorder_task_work_id_fkey FOREIGN KEY (work_id)
+      REFERENCES tbl_workorder_primary (workid) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+
+INSERT INTO tbl_workorder_primary(unit,type,status,start_date,end_date,Shipper) VALUES('wb2039','inbound','open',current_timestamp,current_timestamp,'IFLEX');
+
+insert into tbl_workorder_task(work_id,task_type,task_status,created_by,creation_date,priority,from_location,to_location)
+values(1001,'yyyyy', 'open', 'Raghav',current_timestamp,'least','y','z');
+
+
+insert into tbl_workorder_task(work_id,task_type,task_status,created_by,creation_date,priority,from_location,to_location)
+values(1001,'xxxxx', 'open', 'Krishna',current_timestamp,'least','x','y');
+
+COMMIT;
+
+--------------------------------------------BELOW OBJECTS ARE IN AUDIT_WORK_ORDER DB----------------------------------
+
+CREATE DATABASE AUDIT_WORK_ORDER;
+
+
+
+CREATE TABLE tbl_workorder_audit_primary
+(
+  audit_id serial NOT NULL,
+  audworkid integer NOT NULL,
+  unit_aud character varying(80),
+  type_aud character varying(80),
+  status_aud character varying(80),
+  start_date_aud date,
+  end_date_aud date,
+  shipper_aud character varying(80),
+  record_creation_timestamp timestamp without time zone DEFAULT now(),
+  audit_owner character varying(80) DEFAULT "current_user"(),
+  columns_changed character varying(500),
+  operation character varying(80)
+);
+
+
+
+CREATE TABLE tbl_workorder_audit_task
+(
+  audit_id serial NOT NULL,
+  aud_task_id integer,
+  aud_work_id integer,
+  aud_task_type character varying(80),
+  aud_task_status character varying(80),
+  aud_created_by character varying(80),
+  aud_creation_date timestamp without time zone,
+  aud_priority character varying(80),
+  aud_from_location character varying(80),
+  aud_to_location character varying(80),
+  record_creation_timestamp timestamp without time zone DEFAULT now(),
+  audit_owner character varying(80) DEFAULT "current_user"(),
+  columns_changed character varying(500),
+  operation character varying(80)
+);
+
+
+
