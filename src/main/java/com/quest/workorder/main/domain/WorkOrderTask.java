@@ -128,13 +128,4 @@ public class WorkOrderTask implements Serializable{
 		this.toLocation = toLocation;
 	}
 
-	/*public WorkOrderMovement getWorkOrderMovement() {
-		return workOrderMovement;
-	}
-
-	public void setWorkOrderMovement(WorkOrderMovement workOrderMovement) {
-
-		this.workOrderMovement = workOrderMovement;
-	}*/
-
 }

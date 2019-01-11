@@ -28,7 +28,16 @@ WITH (
 ALTER TABLE tbl_workorder_primary
   OWNER TO postgres;
 
-
+CREATE TABLE WRK_MOVEMENT_BY_USER(
+  USER_ID SERIAL PRIMARY KEY,
+  FIRST_NAME  character varying(64),
+  LAST_NAME   character varying(64),
+  EMAIL_ADDRESS   character varying(64),
+  ADDRESS character varying(64),
+  COUNTRY   character varying(32),
+  STATE   character varying(12),
+  PHONE_NUMBER   character varying(24)
+);
 
 
 CREATE TABLE tbl_workorder_task

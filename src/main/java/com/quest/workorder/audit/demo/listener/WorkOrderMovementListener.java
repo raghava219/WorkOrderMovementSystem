@@ -13,10 +13,6 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 
-import org.skyscreamer.jsonassert.JSONCompare;
-import org.skyscreamer.jsonassert.JSONCompareMode;
-import org.skyscreamer.jsonassert.JSONCompareResult;
-
 import com.quest.workorder.audit.domain.AuditOfWorkOrderMovementEntity;
 import com.quest.workorder.main.domain.WorkOrderMovement;
 
