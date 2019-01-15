@@ -9,7 +9,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonRawValue;
-import com.quest.workorder.main.domain.WorkOrderTask;
+import com.quest.workorder.main.entity.WorkOrderTask;
 
 @Table(name="tbl_workorder_audit_primary", catalog="Audit_Work_Order")
 @Entity

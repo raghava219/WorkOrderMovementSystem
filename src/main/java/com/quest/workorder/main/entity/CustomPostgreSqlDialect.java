@@ -1,4 +1,4 @@
-package com.quest.workorder.main.domain;
+package com.quest.workorder.main.entity;
 
 import java.sql.Types;
 import org.hibernate.dialect.PostgreSQL94Dialect;

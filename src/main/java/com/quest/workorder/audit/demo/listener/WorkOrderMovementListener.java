@@ -14,7 +14,7 @@ import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 
 import com.quest.workorder.audit.domain.AuditOfWorkOrderMovementEntity;
-import com.quest.workorder.main.domain.WorkOrderMovement;
+import com.quest.workorder.main.entity.WorkOrderMovement;
 
 public class WorkOrderMovementListener {
 

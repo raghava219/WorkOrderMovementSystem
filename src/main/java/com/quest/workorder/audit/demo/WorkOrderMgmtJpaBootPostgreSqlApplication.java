@@ -6,17 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
 import com.quest.workorder.main.repository.WorkOrderMovementRepository;
 
 @SpringBootApplication
+@ComponentScan("com.quest.workorder")
 public class WorkOrderMgmtJpaBootPostgreSqlApplication implements CommandLineRunner {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(WorkOrderMgmtJpaBootPostgreSqlApplication.class);
 
-	@Autowired
-	private WorkOrderMovementRepository workOrderMovementRepository;
-
+	
+	  @Autowired private WorkOrderMovementRepository workOrderMovementRepository;
+	 
+	
 	public static void main(String[] args) {
 		SpringApplication.run(WorkOrderMgmtJpaBootPostgreSqlApplication.class,
 				args);
@@ -25,7 +29,7 @@ public class WorkOrderMgmtJpaBootPostgreSqlApplication implements CommandLineRun
 	@Override
 	public void run(String... args) throws Exception {
 
-		System.out.println("Application Running...");
+		logger.info("Application Running...");
 
 	}
 

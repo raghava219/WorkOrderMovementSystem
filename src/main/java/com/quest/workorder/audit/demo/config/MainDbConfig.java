@@ -34,7 +34,7 @@ public class MainDbConfig {
   @Bean(name = "entityManagerFactory")
   public LocalContainerEntityManagerFactoryBean entityManagerFactory(
       EntityManagerFactoryBuilder builder, @Qualifier("dataSource") DataSource dataSource) {
-    return builder.dataSource(dataSource).packages("com.quest.workorder.main.domain").persistenceUnit("Work_Order")
+    return builder.dataSource(dataSource).packages("com.quest.workorder.main.entity").persistenceUnit("Work_Order")
         .build();
   }
 

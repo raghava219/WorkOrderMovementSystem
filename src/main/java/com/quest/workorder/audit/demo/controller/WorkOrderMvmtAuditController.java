@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.quest.workorder.audit.demo.exception.ResourceNotFoundException;
 import com.quest.workorder.audit.domain.AuditOfWorkOrderMovementEntity;
 import com.quest.workorder.audit.repository.WorkOrderMovementHistory;
-import com.quest.workorder.main.domain.WorkOrderMovement;
+import com.quest.workorder.main.entity.WorkOrderMovement;
 import com.quest.workorder.main.repository.WorkOrderMovementRepository;
 
 
